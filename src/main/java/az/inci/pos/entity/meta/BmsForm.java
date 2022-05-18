@@ -54,7 +54,7 @@ public class BmsForm
             referencedColumnName = "FORM_CATEGORY",
             insertable = false,
             updatable = false,
-            foreignKey = @ForeignKey(name = "FK_BMS_FORM_BMS_MODULE"))
+            foreignKey = @ForeignKey(name = "FK_BMS_FORM_BMS_FORM_CATEGORY"))
     private BmsFormCategory bmsFormCategory;
 
     @ManyToOne
@@ -127,13 +127,6 @@ public class BmsForm
 
     @Column(name = "LAST_HOST_NAME", length = 15)
     private String modifiedHostName;
-
-    @OneToOne(orphanRemoval = true)
-    @JoinColumns({
-            @JoinColumn(name = "FORM_ID",
-                    referencedColumnName = "FORM_ID")
-    })
-    private BmsFormCounter bmsFormCounter;
 
     @OneToMany(mappedBy = "bmsForm", orphanRemoval = true)
     @ToString.Exclude

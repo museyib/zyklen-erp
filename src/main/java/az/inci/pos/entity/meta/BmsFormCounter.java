@@ -18,7 +18,12 @@ public class BmsFormCounter
     @EmbeddedId
     private BmsFormKey primaryKey;
 
-    @OneToOne(mappedBy = "bmsFormCounter", orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "FORM_ID",
+            referencedColumnName = "FORM_ID",
+            insertable = false,
+            updatable = false,
+            foreignKey = @ForeignKey(name = "FK_BMS_FORM_COUNTER_BMS_FORM"))
     private BmsForm bmsForm;
 
     @Column(name = "FORM_CNT", nullable = false)
@@ -36,6 +41,6 @@ public class BmsFormCounter
     @Override
     public int hashCode()
     {
-        return Objects.hash(bmsForm);
+        return Objects.hash(primaryKey);
     }
 }

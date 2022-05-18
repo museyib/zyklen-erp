@@ -1,0 +1,3 @@
+IF NOT EXISTS(SELECT * FROM master.sys.sysdatabases WHERE name = 'BMSB1')
+    CREATE DATABASE [BMSB1];
+USE [BMSB1];
